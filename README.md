@@ -10,6 +10,7 @@
 4. Run `composer install`.
 5. Generate app key: `php artisan key:generate`
 6. Run migrations: `php artisan migrate`
+7. Run seeders: `php artisan db:seed`
 7. Install Passport: `php artisan passport:install` then add ID and Secrect in the .env
 8. Serve: `php artisan serve`
 
