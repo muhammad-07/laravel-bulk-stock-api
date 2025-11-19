@@ -1,0 +1,135 @@
+{
+  "info": {
+    "name": "Stocks API (Laravel)",
+    "_postman_id": "b3270c02-9125-4b0e-908d-f79a3f9c9231",
+    "description": "API collection for Laravel Stocks Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/register",
+          "host": ["{{base_url}}"],
+          "path": ["api", "register"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password\"\n}"
+        }
+      }
+    },
+
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/login",
+          "host": ["{{base_url}}"],
+          "path": ["api", "login"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password\"\n}"
+        }
+      }
+    },
+
+    {
+      "name": "Get Stores (auth)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/stores",
+          "host": ["{{base_url}}"],
+          "path": ["api", "stores"]
+        }
+      }
+    },
+
+    {
+      "name": "Get Stocks (auth)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/stocks?page=1&size=25",
+          "host": ["{{base_url}}"],
+          "path": ["api", "stocks"],
+          "query": [
+            { "key": "page", "value": "1" },
+            { "key": "size", "value": "25" }
+          ]
+        }
+      }
+    },
+
+    {
+      "name": "Bulk Insert Stocks (auth)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/stocks/bulk",
+          "host": ["{{base_url}}"],
+          "path": ["api", "stocks", "bulk"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"records\": [\n    {\n      \"item_code\": \"A100\",\n      \"item_name\": \"Item A\",\n      \"quantity\": 10,\n      \"location\": \"Shelf A\",\n      \"store_id\": 1,\n      \"in_stock_date\": \"2025-11-19\"\n    }\n  ]\n}"
+        }
+      }
+    },
+
+    {
+      "name": "Delete Stock (auth)",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/stocks/1",
+          "host": ["{{base_url}}"],
+          "path": ["api", "stocks", "1"]
+        }
+      }
+    },
+
+    {
+      "name": "Logout (auth)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/logout",
+          "host": ["{{base_url}}"],
+          "path": ["api", "logout"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:8000" },
+    { "key": "token", "value": "" }
+  ]
+}
